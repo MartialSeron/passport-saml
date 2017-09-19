@@ -632,6 +632,8 @@ describe( 'passport-saml /', function() {
         done();
       });
 
+
+
       it( 'config with protocol, path, host, and decryptionPvk should pass', function( done ) {
         var samlConfig = {
           issuer: 'http://example.serviceprovider.com',
@@ -656,6 +658,83 @@ describe( 'passport-saml /', function() {
           identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
         };
         var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata without key.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with one contactPerson with one emailAddress as string should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          contactPerson     : [{
+            type            : 'technical',
+            company         : 'Test Company',
+            givenName       : 'Martial',
+            surName         : 'Séron',
+            emailAddress    : 'martial.seron@gmail.com',
+            telephoneNumber : '+33123456789',
+          }]
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with one contact and one email.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with one contactPerson with one emailAddress as array should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          contactPerson     : [{
+            type            : 'technical',
+            company         : 'Test Company',
+            givenName       : 'Martial',
+            surName         : 'Séron',
+            emailAddress    : ['martial.seron@gmail.com'],
+            telephoneNumber : '+33123456789',
+          }]
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with one contact and one email.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with one contactPerson with emailAddress as array should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          contactPerson     : [{
+            type            : 'technical',
+            company         : 'Test Company',
+            givenName       : 'Martial',
+            surName         : 'Séron',
+            emailAddress    : ['martial.seron@gmail.com', 'martial.seron@testcompany.com'],
+            telephoneNumber : '+33123456789',
+          }]
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with one contact.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with two contactPersons should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          contactPerson     : [{
+            type            : 'technical',
+            givenName       : 'Martial',
+            surName         : 'Séron',
+          },{
+            type            : 'other',
+            givenName       : 'John',
+            surName         : 'Doe',
+          }]
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with two contacts.xml', 'utf-8');
 
         testMetadata( samlConfig, expectedMetadata );
         done();

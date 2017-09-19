@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://example.serviceprovider.com" ID="http___example_serviceprovider_com">
+  <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+    <AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost/saml/consume"/>
+  </SPSSODescriptor>
+  <ContactPerson contactType="technical">
+    <Company>Test Company</Company>
+    <GivenName>Martial</GivenName>
+    <SurName>Séron</SurName>
+    <EmailAddress>martial.seron@gmail.com</EmailAddress>
+    <EmailAddress>martial.seron@testcompany.com</EmailAddress>
+    <TelephoneNumber>+33123456789</TelephoneNumber>
+  </ContactPerson>
+</EntityDescriptor>
