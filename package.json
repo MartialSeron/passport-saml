@@ -1,6 +1,6 @@
 {
   "name": "passport-saml",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "licenses": [
     {
       "type": "MIT",
@@ -22,7 +22,8 @@
   "contributors": [
     "Michael Bosworth",
     "Herbert Vojčík",
-    "Peter Loer"
+    "Peter Loer",
+    "Martial Séron"
   ],
   "repository": {
     "type": "git",
