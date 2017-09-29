@@ -4,11 +4,9 @@
     <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
     <md:AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost/saml/consume"/>
   </md:SPSSODescriptor>
-  <md:ContactPerson contactType="technical">
-    <md:Company>Test Company</md:Company>
-    <md:GivenName>Martial</md:GivenName>
-    <md:SurName>Séron</md:SurName>
-    <md:EmailAddress>martial.seron@gmail.com</md:EmailAddress>
-    <md:TelephoneNumber>+33123456789</md:TelephoneNumber>
-  </md:ContactPerson>
+  <md:Organization>
+    <md:OrganizationName xml:lang="en">Dummy organization name</md:OrganizationName>
+    <md:OrganizationDisplayName xml:lang="en">Dummy organization displayName</md:OrganizationDisplayName>
+    <md:OrganizationURL xml:lang="en">http://en.dummyorganization.com</md:OrganizationURL>
+  </md:Organization>
 </md:EntityDescriptor>

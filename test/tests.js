@@ -649,6 +649,22 @@ describe( 'passport-saml /', function() {
         done();
       });
 
+      it( 'config with protocol, path, host, and decryptionPvk in separate keys should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          protocol: 'http://',
+          host: 'example.serviceprovider.com',
+          path: '/saml/callback',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          decryptionPvk: fs.readFileSync(__dirname + '/static/testshib encryption pvk.pem'),
+          separateSigningAndEncryption : true,
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with separate keys.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
       it( 'config with protocol, path, and host should pass', function( done ) {
         var samlConfig = {
           issuer: 'http://example.serviceprovider.com',
@@ -735,6 +751,47 @@ describe( 'passport-saml /', function() {
           }]
         };
         var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with two contacts.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with organization should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          organization : {
+            names        : [{ lang : 'en', text : 'Dummy organization name' }],
+            displayNames : [{ lang : 'en', text : 'Dummy organization displayName' }],
+            urls         : [{ lang : 'en', text : 'http://en.dummyorganization.com' }],
+          },
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with organization.xml', 'utf-8');
+
+        testMetadata( samlConfig, expectedMetadata );
+        done();
+      });
+
+      it( 'config with organization and multiple children should pass', function( done ) {
+        var samlConfig = {
+          issuer: 'http://example.serviceprovider.com',
+          identifierFormat: 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient',
+          organization : {
+            names : [
+              { lang : 'en', text : 'Dummy organization name' },
+              { lang : 'fr', text : 'Name de l\'organisation fictive' },
+            ],
+            displayNames : [
+              { lang : 'en', text : 'Dummy organization displayName' },
+              { lang : 'fr', text : 'DisplayName de l\'organisation fictive' },
+            ],
+            urls : [
+              { lang : 'en', text : 'http://en.dummyorganization.com' },
+              { lang : 'fr', text : 'http://fr.dummyorganization.com' },
+            ],
+          },
+        };
+        var expectedMetadata = fs.readFileSync(__dirname + '/static/expected metadata with organization and multiple children.xml', 'utf-8');
 
         testMetadata( samlConfig, expectedMetadata );
         done();

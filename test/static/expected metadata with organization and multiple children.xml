@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://example.serviceprovider.com" ID="http___example_serviceprovider_com">
+  <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+    <md:AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost/saml/consume"/>
+  </md:SPSSODescriptor>
+  <md:Organization>
+    <md:OrganizationName xml:lang="en">Dummy organization name</md:OrganizationName>
+    <md:OrganizationName xml:lang="fr">Name de l'organisation fictive</md:OrganizationName>
+    <md:OrganizationDisplayName xml:lang="en">Dummy organization displayName</md:OrganizationDisplayName>
+    <md:OrganizationDisplayName xml:lang="fr">DisplayName de l'organisation fictive</md:OrganizationDisplayName>
+    <md:OrganizationURL xml:lang="en">http://en.dummyorganization.com</md:OrganizationURL>
+    <md:OrganizationURL xml:lang="fr">http://fr.dummyorganization.com</md:OrganizationURL>
+  </md:Organization>
+</md:EntityDescriptor>

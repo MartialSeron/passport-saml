@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
-<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://example.serviceprovider.com" ID="http___example_serviceprovider_com">
-  <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
-    <AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost/saml/consume"/>
-  </SPSSODescriptor>
-  <ContactPerson contactType="technical">
-    <GivenName>Martial</GivenName>
-    <SurName>Séron</SurName>
-  </ContactPerson>
-  <ContactPerson contactType="other">
-    <GivenName>John</GivenName>
-    <SurName>Doe</SurName>
-  </ContactPerson>
-</EntityDescriptor>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://example.serviceprovider.com" ID="http___example_serviceprovider_com">
+  <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+    <md:AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost/saml/consume"/>
+  </md:SPSSODescriptor>
+  <md:ContactPerson contactType="technical">
+    <md:GivenName>Martial</md:GivenName>
+    <md:SurName>Séron</md:SurName>
+  </md:ContactPerson>
+  <md:ContactPerson contactType="other">
+    <md:GivenName>John</md:GivenName>
+    <md:SurName>Doe</md:SurName>
+  </md:ContactPerson>
+</md:EntityDescriptor>
